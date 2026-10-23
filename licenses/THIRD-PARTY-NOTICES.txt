@@ -1,0 +1,17 @@
+HPRGhostReplay test release — model format references
+
+This executable reads the user's own installed game resources. Game assets are not included.
+Container and model layouts were cross-checked against DGIorio's public MIT-licensed tools:
+https://github.com/DGIorio/bundle_packer_unpacker
+https://github.com/DGIorio/nfshpr_exporter
+
+Their source code is not a runtime dependency and is not included in this package.
+Their upstream license notices are retained alongside this notice for attribution.
+
+Application icon artwork
+The application icon uses the original NFS Hot Pursuit Remastered Steam mark
+with an additional translucent duplicate. The original mark and associated
+artwork remain the property of their respective rights holders; they are not
+covered by the MIT format-reference licenses above. No endorsement or
+affiliation is implied. This attribution does not grant a trademark or
+artwork license.

@@ -1,0 +1,92 @@
+HPRGhostReplay 测试版 0.1.0 · beta.8
+作者：LoughShinny302 · https://space.bilibili.com/38767224
+
+【首次使用】
+解压到方便的位置，运行 HPRGhostReplay.exe。主工具仍可放在桌面等独立目录。
+点击“选择游戏”选择 NFS11Remastered.exe，或让软件自动识别运行中的游戏。
+自动录制默认开启；正常进入赛事、发车，冲线后自动保存。重开或退出丢弃未完成录制。
+顶部“中文 / ENG”即时切换语言；每次启动默认中文。
+
+【原生回放】
+原生回放需要游戏安装 x64 ASI 加载器；录制本身不需要。
+已有 Ultimate ASI Loader 时保留原文件，软件不会替换加载器或其他插件。
+没有加载器时，从官方项目选择 x64 版本并按其说明安装：
+https://github.com/ThirteenAG/Ultimate-ASI-Loader/releases
+本游戏可使用 dinput8.dll 入口；如已有同名 DLL，请先确认其用途，不要直接覆盖。
+在录像库选中录像，点击“载入回放”。主工具会将内嵌的 HPRGhostNative.asi 安装到游戏目录。
+如果游戏已运行，按提示退出游戏，等待约两秒后重新启动一次。之后日常切换录像和车型无需重启。
+进入对应赛事后自动对齐，自动加载录像对应的实际车型；不透明度可调。
+录制、回放有独立开关，可以同时运行。实际运行的卡片变亮，等待或关闭时灰色。
+回放随游戏画面绘制，不再使用 WPF 透明覆盖窗口，也不需要原型控制器。
+切出游戏时停止画车，返回后继续。关闭回放或退出主工具会停止车影；主工具意外退出后也会自动停止。
+仍建议使用已验证的窗口或无边框模式。车模有自身遮挡、简化材质，暂无道路、山体等场景遮挡。
+
+【录像与分享】
+EXE 旁的 Recordings 是录像库，“打开录像文件夹”直达。
+默认文件名：赛事-车辆-分秒厘秒-记录人.hprghost。
+录像格式仍为版本4，现有录像无需转换或重录；新绘制方式不会修复旧文件已写入的位置/时间错配。
+分享只需发送所选 .hprghost；朋友导入后选择并载入回放。导入保留原件，不会自动开始播放。
+重命名仅改文件名；删除需要确认。旧自动名称的 Vehicle 数字会在界面显示为友好名称，不自动修改原件。
+EXE 哈希仅记录来源，兼容性由运行时布局判断，不保证支持任意布局。
+
+【升级与移除】
+退出旧工具后替换 EXE、使用说明和第三方许可文本，保留 Recordings 与 GameFolder.txt。
+已识别的旧回放组件会在退出游戏后自动更新；未知同名文件不会被覆盖，会显示提示。
+回放组件内嵌在 EXE 中，运行时只安装一个 HPRGhostNative.asi；无需下载额外 C++、Python、SDK 或运行库。
+需要移除原生回放时，退出游戏后移走 HPRGhostNative.asi，保留其他插件及加载器。
+
+【环境与日志】
+Windows 10/11 x64，系统 .NET Framework 4.x 和 Windows 图形组件。
+正常运行不写状态日志、不导出摄像机或逐帧诊断数据。故障时才写 Logs/errors.log，最多16 KB，仅版本和固定错误码。
+故障报告不含日期、路径、地址、PID、哈希、录像名称或署名。启动只清理 Logs 中的历史状态日志，不删除录像、配置或其他文件。
+GameFolder.txt 保存本地游戏位置；录像包含记录人和录制时间。反馈故障只需提供 errors.log，不要打包整个目录。
+发行版不包含开发自检、探针、模型/截图导出或原型控制器。组件许可见“第三方许可.txt”。
+本项目是用于单人练习的非官方测试工具，与 EA 或其授权方无隶属关系，也未获其背书。
+录制读取游戏数据；原生回放是游戏进程内 ASI 绘制组件。使用时遵守适用的游戏和平台条款。
+
+========================================
+English
+========================================
+HPRGhostReplay Beta 0.1.0 · beta.8
+Author: LoughShinny302 · https://space.bilibili.com/38767224
+
+FIRST USE
+Extract anywhere convenient and run HPRGhostReplay.exe. Select NFS11Remastered.exe with "Select game", or let the app detect the running game.
+Recording is enabled by default: start a race normally and finish to save it. Restarting or leaving discards an unfinished capture.
+The interface starts in Chinese; "中文 / ENG" switches languages immediately.
+
+NATIVE PLAYBACK
+Playback requires an x64 ASI loader in the game; recording does not.
+Keep an existing Ultimate ASI Loader. This app does not replace the loader or other plugins.
+If needed, obtain the x64 loader from its official project and follow its instructions:
+https://github.com/ThirteenAG/Ultimate-ASI-Loader/releases
+This game supports the dinput8.dll entry point. Identify any existing same-name DLL before replacing anything.
+Select a replay and click "Load replay". The app installs its embedded HPRGhostNative.asi in the game folder.
+If the game is running, exit it, wait about two seconds, and restart once. Later replay or vehicle changes need no restart.
+Playback aligns automatically in the matching event and uses the recorded vehicle model. Opacity is adjustable.
+Recording and playback switches are independent. Active cards brighten; waiting and stopped states stay gray.
+The native component draws into the game frame. There is no WPF overlay window and no separate prototype controller.
+Drawing pauses when the game loses focus. Turning playback off or closing the app stops the ghost; loss of the app heartbeat also stops it.
+Windowed/borderless is the validated configuration. Simplified models have self-occlusion; game scenery does not yet occlude them.
+
+REPLAYS AND SHARING
+Recordings beside the EXE is the library; its folder button opens it directly.
+Default names contain the event, vehicle, minutes/seconds/centiseconds and driver.
+The format remains version 4. Existing recordings need no conversion or rerecording. New rendering cannot repair timestamp/position errors already stored in an old file.
+Share only the selected .hprghost file. Import preserves the source; select and load it to play.
+Rename changes only the file name. Delete needs confirmation. Friendly vehicle names do not automatically rename original files.
+The source EXE hash is metadata; actual runtime layout decides compatibility. Arbitrary layouts are not guaranteed.
+
+UPDATES AND REMOVAL
+Exit the old app and replace the EXE, guide and license text. Keep Recordings and GameFolder.txt.
+Recognized older native components update after the game exits. Unrecognized same-name files remain untouched.
+The EXE embeds the component and installs only HPRGhostNative.asi. No additional C++ runtime download, Python or SDK is required.
+To remove native playback, exit the game and move HPRGhostNative.asi aside. Keep other plugins and the loader.
+
+REQUIREMENTS AND LOGS
+Windows 10/11 x64, system .NET Framework 4.x and Windows graphics components.
+Normal operation writes no status logs or camera/frame diagnostics. Faults create Logs/errors.log, capped at16 KB, with only the version and fixed error codes.
+The report excludes dates, paths, addresses, PIDs, hashes, replay names and driver names. Startup cleanup affects only historical status logs inside Logs, not recordings or configuration.
+GameFolder.txt stores your game location; recordings contain the driver and creation time. Send only errors.log for fault reports, not the entire folder.
+Development probes, tests, exporters and the prototype controller are excluded. See 第三方许可.txt for bundled-component notices.
+This is an unofficial single-player practice tool, not endorsed by or affiliated with EA or its licensors. Recording reads game data; native playback is an in-process ASI renderer. Follow applicable game and platform terms.

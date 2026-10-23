@@ -1,0 +1,8 @@
+清理完成：2026-10-20
+删除56个确认过的目标，共8448个文件，约671.5MB。
+包括：编译缓存和构建产物、源码审阅包解压构建目录、7份重复module.bin、Zig下载压缩包、旧版及重复EXE、旧日志、旧发行ZIP与发行解压目录、迁移时的临时验证程序与打包产物。
+保留：当前beta11及beta10回退ZIP、正式主程序、源码审阅ZIP、全部录像、当前源码、Zig编译器、MinHook、加载器与原生组件、迁移校验记录。
+独有原型源码快照、安装记录和诊断结论已保留到research/native-ghost-prototype/validation-archive。
+未删除独有的大型时序原始样本及旧修复前源码备份。
+68个受保护文件清理前后SHA256一致。清理后Release构建通过；临时构建检查程序已移除。
+详细删除清单见deleted-items.json；保留文件摘要见protected-files.json。

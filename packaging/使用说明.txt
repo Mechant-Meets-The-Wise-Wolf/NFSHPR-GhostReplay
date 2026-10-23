@@ -1,0 +1,69 @@
+﻿HPRGhostReplay v0.1 
+作者：LoughShinny302
+B站：https://space.bilibili.com/38767224
+
+使用指南:
+一、开始使用
+1. 建议先关闭游戏，解压本软件到任何合适的地方，打开 HPRGhostReplay.exe。
+2. 软件会自动找到游戏并安装必备插件；找不到时，按提示选择游戏目录中的 NFS11Remastered.exe。
+3. 启动游戏，使用窗口或无边框模式。如果安装时游戏已经打开，按提示重启游戏一次。
+
+
+二、录制一场比赛
+1. 填写“记录人”，点击“开启录制”。
+2. 正常进入赛事并发车，不需要暂停或手动开始计时。
+3. 冲线后自动保存。中途重开或退出比赛，不会保存这一局。
+4. 录像会出现在“录像库”，默认按赛事、车辆、用时和记录人命名。
+
+三、幽灵回放
+1. 在录像库选中一份录像，点击“载入回放”。
+2. 进入录像对应的赛事，发车后车影自动同步播放。
+3. 用“不透明度”滑块调整车影浓淡；不想看时点击“关闭回放”。
+
+需要换录像时，选中另一份并点击“载入回放”即可。
+
+四、分享与管理
+点击“打开录像文件夹”，把想分享的 .hprghost 文件发给朋友。
+收到录像后，点击“导入录像”，再选中它载入回放。
+录像库下方可以重命名或删除选中的录像。
+
+五、卸载游戏内插件
+先退出游戏，再点击软件下方“回放组件”→“卸载回放”。录像会保留。
+卸载后不会自动装回；以后想继续使用，载入一份录像即可重新启用。
+
+
+
+========================================
+English
+========================================
+HPRGhostReplay v0.1
+Author: LoughShinny302
+Bilibili: https://space.bilibili.com/38767224
+
+User Guide
+1. Get started
+1) We recommend closing the game first. Extract the app to a convenient folder and open HPRGhostReplay.exe.
+2) The app finds the game and installs the required plugins automatically. If it cannot find the game, follow the prompt to select NFS11Remastered.exe in your game folder.
+3) Start the game in windowed or borderless mode. If the game was already running during installation, restart it once when prompted.
+
+2. Record a race
+1) Enter your name in "Driver" and click "Start recording".
+2) Enter an event and start normally. There is no need to pause or start a timer manually.
+3) The replay is saved automatically when you cross the finish line. Restarting or leaving the race means that run will not be saved.
+4) The replay appears in the library, named after the event, vehicle, duration and driver.
+
+3. Ghost playback
+1) Select a replay in the library and click "Load replay".
+2) Enter the matching event. The ghost starts in sync when the race begins.
+3) Use the "Ghost opacity" slider to adjust its visibility. Click "Stop replay" when you no longer want to see it.
+
+To switch replays, select another one and click "Load replay".
+
+4. Share and manage replays
+Click "Open replay folder" and send the .hprghost file you want to share to your friend.
+To use a replay you received, click "Import replay", then select and load it.
+Use "Rename" or "Delete replay" below the library to manage the selected replay.
+
+5. Remove the game plugins
+Exit the game, then click "Playback setup" → "Uninstall" at the bottom of the app. Your replays are kept.
+The plugins will not be reinstalled automatically. Load a replay whenever you want to enable them again.

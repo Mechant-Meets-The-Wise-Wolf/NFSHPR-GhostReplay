@@ -1,0 +1,45 @@
+# ---------------------------------------------------------------------------
+# HPRGhostReplay 仓库忽略规则
+#
+# 原则：仓库只保存"能复现构建、能读懂实现"的内容。
+# 运行时数据、可再生的构建产物、以及体积庞大的历史证据都留在本机，不入库。
+# ---------------------------------------------------------------------------
+
+# --- 运行时数据：每台机器各自产生 ---
+Logs/
+GameFolder.txt
+PlaybackDisabled.txt
+app/Recordings/
+*.hprghost
+*.log
+*.tmp
+.hprghost-*.tmp
+
+# --- 构建产物：可用 Build.ps1 / native/Build.ps1 重新生成 ---
+app/HPRGhostReplay-dev.exe
+native/build/
+research/build/
+*.pdb
+*.obj
+*.o
+*.ilk
+*.exp
+*.user
+*.suo
+
+# --- 历史证据：保留在开发机，不纳入仓库 ---
+research/**
+archive/migration-20261020/**
+!archive/migration-20261020/迁移完成.zh-CN.md
+archive/cleanup-20261020-*/**
+!archive/cleanup-20261020-*/清理结果.txt
+
+# --- 发行暂存目录与旧版解压副本 ---
+releases/*-contents/
+releases/verify-*/
+
+# --- 系统与编辑器 ---
+Thumbs.db
+.DS_Store
+.vs/
+.idea/

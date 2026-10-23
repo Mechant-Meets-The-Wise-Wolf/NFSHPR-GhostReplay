@@ -1,0 +1,31 @@
+using System;
+using System.IO;
+using System.IO.MemoryMappedFiles;
+using System.Text;
+using System.Windows.Media;
+using System.Windows.Media.Media3D;
+namespace HprGhost {
+ public static class NativeTests {
+  public static void Run(Action<bool,string> check,string folder){
+   LoaderTests.Run(check,folder);StartupInstallTests.Run(check,folder);
+   var mesh=new MeshGeometry3D{Positions=new Point3DCollection{new Point3D(0,0,0),new Point3D(1,0,0),new Point3D(0,1,0)},TriangleIndices=new Int32Collection{0,1,2}};var geometry=new GeometryModel3D(mesh,new DiffuseMaterial(new SolidColorBrush(Colors.Cyan))){Transform=new TranslateTransform3D(2,3,4)};var model=new VehicleModel();model.Geometry.Children.Add(geometry);NativeMeshData data=NativePayload.Mesh(model);check(data.Vertices.Length==30&&data.Indices.Length==3&&data.Vertices[0]==2&&data.Vertices[1]==3&&data.Vertices[2]==4&&Math.Abs(data.Vertices[5]-1)<1e-6,"native mesh export preserves wheel/part transforms and generates finite normals");
+   var replay=new Replay{GameHash=GameReader.SupportedHash,VehicleResourceId=329012,EventId=572463,Completed=true,FinalTime=.4,Author="测试"};float[] angles={179,-179,90,95};double[] times={0,.05,.1,.4};for(int j=0;j<4;j++){double a=angles[j]*Math.PI/180;replay.Samples.Add(new Sample{Time=times[j],Pose=new Quat(0,Math.Sin(a/2),0,Math.Cos(a/2)).Pose(new Vec(1000+j,0,j)),Speed=20});}
+   byte[] bytes=NativePayload.Create(replay,data);check(Encoding.ASCII.GetString(bytes,0,8)=="HPRNAT03"&&BitConverter.ToInt32(bytes,8)==bytes.Length&&BitConverter.ToUInt32(bytes,12)==329012&&BitConverter.ToUInt32(bytes,16)==572463,"native payload binds the selected car and event without changing replay format");File.WriteAllBytes(Path.Combine(folder,"native-payload.bin"),bytes);
+   double[] probes={-.01,0,.0125,.025,.0499,.05,.075,.1,.2,.35,.4,.401};using(var writer=new BinaryWriter(File.Create(Path.Combine(folder,"native-expected.bin")))){writer.Write(probes.Length);foreach(double time in probes){Sample sample=replay.At(time);writer.Write(time);writer.Write(sample==null?0:1);foreach(Vec v in sample==null?new Vec[4]:new Vec[]{sample.Pose.Right,sample.Pose.Up,sample.Pose.Forward,sample.Pose.Position}){writer.Write(v.X);writer.Write(v.Y);writer.Write(v.Z);}}}
+   string channel="Local\\HPRGhostReplayTest_"+Guid.NewGuid().ToString("N");using(var bridge=new NativePlayback(null,channel,false)){
+    bridge.Publish(bytes);using(var control=MemoryMappedFile.OpenExisting(channel))using(var view=control.CreateViewAccessor()){
+     check(!bridge.Ready&&view.ReadInt32(16)==0&&(view.ReadInt32(12)&1)==0,"native selection is published atomically and stays inactive until acknowledged");int length=view.ReadInt32(76);byte[] nameBytes=new byte[length*2];view.ReadArray(80,nameBytes,0,nameBytes.Length);string name=Encoding.Unicode.GetString(nameBytes);using(var asset=MemoryMappedFile.OpenExisting(name))using(var read=asset.CreateViewAccessor()){byte[] actual=new byte[bytes.Length];read.ReadArray(0,actual,0,actual.Length);check(Convert.ToBase64String(actual)==Convert.ToBase64String(bytes),"native shared-memory transfer preserves every payload byte without temporary recordings");}
+     view.Write(32,1234);view.Write(36,Environment.TickCount);view.Write(40,1);view.Write(52,view.ReadInt32(48));view.Write(340,view.ReadInt32(336));bridge.Update(true,37,1234);check(bridge.Ready&&view.ReadInt32(16)==1&&view.ReadInt32(20)==37,"acknowledged native playback follows the independent play and opacity controls");
+     view.Write(72,Environment.TickCount);check(bridge.IsDrawing,"playback activity uses recent native drawing rather than merely a loaded file");view.Write(36,unchecked(Environment.TickCount-5000));check(!bridge.Ready,"stale plugin heartbeat is never reported as ready");view.Write(36,Environment.TickCount);bridge.Update(true,37,9999);check(!bridge.Ready,"a different game process cannot satisfy the playback connection");bridge.Update(true,37,1234);
+     bridge.Publish(bytes);check(!bridge.Ready&&view.ReadInt32(16)==0&&view.ReadInt32(48)!=view.ReadInt32(52),"switching recordings invalidates the old acknowledgement and stops the prior car");bridge.Dispose();check(view.ReadInt32(16)==0&&view.ReadInt32(24)==0,"closing the tool explicitly revokes native playback ownership");
+    }
+   }
+   check(typeof(NativeComponent).Assembly.GetManifestResourceStream("HprGhost.Native.asi")!=null,"portable EXE embeds the native component without a separate runtime download");
+   check(Encoding.ASCII.GetString(NativeComponent.Bytes).Contains("HPRGHOST_NATIVE_COMPONENT_V3"),"embedded native module carries the stable component identity for safe future updates");
+   string installFolder=Path.Combine(folder,"native-install-"+Guid.NewGuid().ToString("N"));Directory.CreateDirectory(installFolder);string target=Path.Combine(installFolder,NativeComponent.FileName);
+   try{check(NativeComponent.Install(installFolder,false)&&File.Exists(target),"native component installs from the embedded resource in a new destination");check(NativeComponent.Install(installFolder,true),"an already matching component needs no replacement while the game runs");byte[] foreign=Encoding.ASCII.GetBytes("Unrelated user-owned component");File.WriteAllBytes(target,foreign);bool refused=false;try{NativeComponent.Install(installFolder,false);}catch(IOException){refused=true;}check(refused&&Convert.ToBase64String(File.ReadAllBytes(target))==Convert.ToBase64String(foreign),"native installer refuses to overwrite an unrecognized same-name user file");byte[] prior=Encoding.ASCII.GetBytes("Older HPRGHOST_NATIVE_COMPONENT_V3 build");File.WriteAllBytes(target,prior);check(!NativeComponent.Install(installFolder,true)&&File.ReadAllBytes(target).Length==prior.Length,"native component update is deferred while the game is running");check(NativeComponent.Install(installFolder,false)&&Convert.ToBase64String(File.ReadAllBytes(target))==Convert.ToBase64String(NativeComponent.Bytes),"owned native component upgrades after game exit without modifying recordings");}finally{string parent=Path.GetFullPath(folder)+Path.DirectorySeparatorChar;if(!Path.GetFullPath(installFolder).StartsWith(parent,StringComparison.OrdinalIgnoreCase))throw new IOException("Unsafe native test cleanup");if(File.Exists(target))File.Delete(target);Directory.Delete(installFolder);}
+  }
+ }
+}
+
+

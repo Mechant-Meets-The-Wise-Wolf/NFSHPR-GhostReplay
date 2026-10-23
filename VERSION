@@ -1,0 +1,25 @@
+# HPRGhostReplay 版本权威文件
+#
+# 本文件是版本号的唯一来源。产品版本固定为 0.1，状态为测试版；
+# 1.0 之前一律称测试版，不称正式版，也不再使用 beta 后缀。
+# 修改版本时，先改这里，再同步 AppPaths.cs / AppInfo 与 UiText 中的版本键，
+# 最后重新构建、打包，并更新本文件的四个哈希。
+
+name=HPRGhostReplay
+version=0.1
+status=测试版
+build=1
+released=2026-10-23
+replay_format=4
+native_payload=HPRNAT03
+control_channel_version=3
+
+# 以下为当前存档产物的校验值，用于确认仓库、本地与发行包三者一致。
+exe_sha256=d6f2112644683a1aaaa91d9dcabef4c4d9ea28fa5f7344388e8e78b48ffe682c
+asi_sha256=f92f86b3a41591d6968de6e17ac20c865b6b6cddc6862ea530bb98f2aa7245cc
+loader_sha256=031a3e5576d91dce1e438d36b9a3d462c7334ab4791990a8ff1e3ddc0e132daf
+package=HPRGhostReplay-0.1-win-x64.zip
+package_zip_sha256=0fb598ea2ec7dad6e7d9303d5b0594723b31e7f9a3756aa24c02ef9b500a2fd9
+
+# Windows 文件属性里的数值版本，仅作构建标识，不参与对外版本号。
+exe_file_version=0.1.0.1

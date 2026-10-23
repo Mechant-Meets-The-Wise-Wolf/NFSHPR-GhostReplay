@@ -1,0 +1,25 @@
+# 文本按行尾自动归一化，二进制不做任何转换。
+* text=auto
+
+*.cs   text
+*.cpp  text
+*.hpp  text
+*.c    text
+*.h    text
+*.md   text
+*.tsv  text
+*.txt  text
+*.json text
+*.ps1  text eol=crlf
+*.cmd  text eol=crlf
+
+*.exe      binary
+*.dll      binary
+*.asi      binary
+*.lib      binary
+*.pdb      binary
+*.zip      binary
+*.bin      binary
+*.ico      binary
+*.png      binary
+*.hprghost binary

@@ -1,0 +1,29 @@
+﻿HPRGhostReplay 参考录像（离线时序修复副本）
+
+赛事：ULTIMATELY OPEN
+车辆：Lamborghini Reventon Roadster
+记录人字段：Player（保留朋友原文件中的内容，实际昵称尚未确认）
+轨迹时长：01:28.81（88.813114 秒）
+原终点字段：01:28.71（88.713118 秒，原样保留，未经结算页核实）
+
+使用方法
+将 .hprghost 文件复制到软件旁的 Recordings 文件夹，点击“刷新”，选中后“载入回放”。
+使用“导入录像”也可以，但软件会按默认规则重新命名；建议随后重命名并保留“时序修复”字样。
+
+修复范围
+仅调整 17 个采样点的时间戳：16 个点各提前 16.666 毫秒，有前后两段数据共同支持；末尾 1 个点后移 16.666 毫秒，为单侧数据支持的估计。
+没有平均、平滑、重建或更改位置、方向、车速，也没有删除采样点。车型、赛事、原记录人、来源标识、录制时间、完整标记和原终点字段均保留。
+这是对旧录像的离线重配时操作，不能当作录制器输出无异常的原始证据。
+
+尚未确认
+用户记忆中的结算约为 01:27.2x，可能对应另一局；本文件没有足够信息确认或恢复那个成绩。
+没有按记忆中的成绩压缩或平移全程，当前文件的总轨迹时长不等同于已核实的正式成绩。
+请先确认这份录像是否为希望发布的那一局，并在游戏中简短试播确认对齐，再作为正式随包示例。
+
+English
+This is an offline retimed copy of a friend's ULTIMATELY OPEN replay, using the Lamborghini Reventon Roadster.
+Trajectory duration: 01:28.81. The original finish field (01:28.71) is preserved but has not been verified against the results screen.
+Copy the replay into Recordings, refresh the library, and load it. Import also works, but the app generates a new default name; keep a repaired/retimed label when renaming it.
+Sixteen interior timestamps were moved one 16.666 ms tick earlier, supported by both neighbouring intervals. The final timestamp was moved one tick later based on one-sided evidence and remains an estimate.
+All positions, rotations, speeds and metadata are unchanged. No smoothing, averaging or sample deletion was applied.
+The remembered result of approximately 01:27.2x may belong to another run. No verified official result or live-game alignment is claimed. Confirm the run and briefly test playback before publishing it as a bundled example.

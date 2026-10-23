@@ -1,0 +1,68 @@
+{
+  "package_version": "0.1.3-smoothing-local-20261016",
+  "replay_format": 4,
+  "layout_profile": "hpr-pc-x64-r1",
+  "compatibility_policy": "runtime-signatures-and-data-validation",
+  "reference_game_exe_sha256": "fab844539ad04f18b8c920615e27812fb22612d42c537417964a502d9862a017",
+  "reference_hash_is_required": false,
+  "exe_hash_whitelist": false,
+  "requires_asi_loader": false,
+  "contains_game_assets": false,
+  "contains_personal_recordings": false,
+  "friend_variant_in_game_verified": false,
+  "timing_fix_in_game_verified": false,
+  "source_offline_checks": 61,
+  "standalone_offline_checks": null,
+  "files": [
+    {
+      "path": "HPRGhost-安装与使用.txt",
+      "bytes": 5281,
+      "sha256": "ec31d08f90a12ec686cc8aee2169a42404b5ccb2e8fd77a83c0cd3b7bbfc13e6"
+    },
+    {
+      "path": "HPRGhost-版本说明.txt",
+      "bytes": 890,
+      "sha256": "44f6bd94d5cb802e8b5ed14b8988a0cbf2a8bdbc5dffa0aaf7969212fd68efe8"
+    },
+    {
+      "path": "mod-research/ghost-system/events.tsv",
+      "bytes": 12097,
+      "sha256": "cf0a6492d7dfe11938e5040519f44435b36206e117c1f45b1aa28a694f160dde"
+    },
+    {
+      "path": "mod-research/ghost-system/HPRGhost.exe",
+      "bytes": 80384,
+      "sha256": "b3e2b59e2666deddc677c3a16a5cc6ec54ff59e98339f1bb96aa08bfd0032537"
+    },
+    {
+      "path": "mod-research/ghost-system/LICENSE.bundle-format.txt",
+      "bytes": 1064,
+      "sha256": "91a5bafd14456440a1338253083e2c97f59128b1c3422911fbadb821cd88ec08"
+    },
+    {
+      "path": "mod-research/ghost-system/LICENSE.model-format.txt",
+      "bytes": 1064,
+      "sha256": "0661401cf1b6208b2c28973f75fc32a70b1626108923329ce984342f5eb6aebc"
+    },
+    {
+      "path": "mod-research/ghost-system/recordings/放置录像说明.txt",
+      "bytes": 182,
+      "sha256": "7cd684692204b072493ed5ead5f0a1931b8dfad7296c68c95567d15c7b54651a"
+    },
+    {
+      "path": "mod-research/ghost-system/THIRD-PARTY-NOTICES.txt",
+      "bytes": 665,
+      "sha256": "b43e3536771ecc44f8a816c1c55f95d85eabf6395e9700c0e6040e890c0e81f1"
+    },
+    {
+      "path": "mod-research/ghost-system/vehicles.tsv",
+      "bytes": 4581,
+      "sha256": "816ec78cee6976440570e7484dc9eeefbdd6fe50fbc41c65e2ffe655e20be364"
+    },
+    {
+      "path": "StartHPRGhost.cmd",
+      "bytes": 352,
+      "sha256": "60427ae3fbe845283d6231c31ac97f6e13137d88e14fb0895ba9c2fa8c57cef1"
+    }
+  ]
+}
